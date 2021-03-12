@@ -1,27 +1,25 @@
 import java.util.*
 
 fun main() {
-    var arr = Array(3) { charArrayOf(' ',' ',' ') }
+    var arr = Array(3) { charArrayOf(' ', ' ', ' ') }
     var player = 1
     var win: Int
-    while(true) {
-        viewBoard(arr,player)
+    while (true) {
+        viewBoard(arr, player)
         win = isWin(arr)
         if (win == 1 || win == 2) {
             println("Player $player 승리!")
             break
-        }
-        else if (win == 3) {
+        } else if (win == 3) {
             println("무승부!")
             break
         }
 
-        val input = inputNum(arr,player)
-        changeBoard(arr,input,player)
+        val input = inputNum(arr, player)
+        changeBoard(arr, input, player)
 
         player = if (player == 1) 2 else 1
     }
-
 
 
 }
@@ -37,18 +35,17 @@ inline fun viewBoard(board: Array<CharArray>, player: Int) {
 }
 
 
-
 inline fun inputNum(board: Array<CharArray>, player: Int): IntArray {
-    var r:Int
-    var c:Int
+    var r: Int
+    var c: Int
     loop@ while (true) {
         print("Player $player 입력(줄,칸): ")
-        val st = StringTokenizer(readLine(),",")
+        val st = StringTokenizer(readLine(), ",")
         r = st.nextToken().toInt()
         c = st.nextToken().toInt()
 
         when {
-            (r !in 0..2 && c !in 0..2) ->  {
+            (r !in 0..2 && c !in 0..2) -> {
                 println("인덱스를 벗어났습니다 다시 입력해주세요.")
                 continue@loop
             }
@@ -59,7 +56,7 @@ inline fun inputNum(board: Array<CharArray>, player: Int): IntArray {
         }
         break
     }
-    return intArrayOf(r,c)
+    return intArrayOf(r, c)
 }
 
 fun changeBoard(board: Array<CharArray>, input: IntArray, player: Int) {
@@ -76,47 +73,19 @@ fun changeBoard(board: Array<CharArray>, input: IntArray, player: Int) {
 fun isWin(board: Array<CharArray>): Int {   // 0: 게임진행 1: 플레이어1승리 2: 플레이어2승리 3: 무승부
     var prev: Char
     for (i in 0..2) {
-        prev = ' '
-        for (j in 0..2) {   //가로방향 확인
-            if (board[i][j] == ' ')
-                break
-            if(j == 0) {
-                prev = board[i][j]
-                continue
-            }
-            if (prev != board[i][j])
-                break
+        if (board[i][0] != ' ' && board[i][0] == board[i][1] && board[i][1] == board[i][2]) //가로방향 확인
+            return if (board[i][0] == 'O') 1 else 2
 
-            if (j == 2) {
-                return if (board[i][j] == 'O') 1 else 2
-            }
-        }
+        if (board[0][i] != ' ' && board[0][i] == board[1][i] && board[1][i] == board[2][i]) //세로방향 확인
+            return if (board[0][i] == 'O') 1 else 2
     }
 
-    for (i in 0..2) {   //세로방향 확인
-        prev = ' '
-        for (j in 0..2) {
-            if (board[j][i] == ' ')
-                break
-            if(j == 0) {
-                prev = board[j][i]
-                continue
-            }
-            if (prev != board[j][i])
-                break
-            if (j == 2) {
-                return if(board[j][i] == 'O') 1 else 2
-            }
-        }
-    }
     if (board[1][1] != ' ') {   //x자 방향 확인
-        if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
-            return if(board[1][1] == 'O') 1 else 2
-        }
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
+            return if (board[1][1] == 'O') 1 else 2
 
-        if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-            return if(board[1][1] == 'O') 1 else 2
-        }
+        if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
+            return if (board[1][1] == 'O') 1 else 2
     }
 
     for (i in 0..2) {   //비어있는 칸 확인
