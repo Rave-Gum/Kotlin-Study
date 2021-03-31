@@ -24,4 +24,7 @@
 | 1주차 | [코틀린 프로그래밍 기본 1](https://www.boostcourse.org/mo132/joinLectures/28611) - 1단원, 2단원 |
 | 2주차 | [코틀린 프로그래밍 기본 1](https://www.boostcourse.org/mo132/joinLectures/28611) - 3단원, 4단원 |
 | 3주차 | [코틀린 프로그래밍 기본 1](https://www.boostcourse.org/mo132/joinLectures/28611) - Final 프로젝트 |
-| 4주차 |                                                              |
+| 4주차 | [코틀린 프로그래밍 기본 2](https://www.boostcourse.org/mo234/joinLectures/44859) - 1단원, 2단원 |
+| 5주차 | [코틀린 프로그래밍 기본 2](https://www.boostcourse.org/mo234/joinLectures/44859) - 3단원 |
+| 6주차 | [코틀린 프로그래밍 기본 2](https://www.boostcourse.org/mo234/joinLectures/44859) - 4단원 |
+| 7주차 | [코틀린 프로그래밍 기본 2](https://www.boostcourse.org/mo234/joinLectures/44859) - 5단원 |
